@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 
 import ImageViewer from '../components/ImageViewer';
@@ -7,23 +7,27 @@ import DraggableImage from '../components/DraggableImage';
 
 const BusLoop = require('../assets/TemporaryBusLoop.png');
 const Bus = require('../assets/BusIcon.png');
+const PHSLogo = require('../assets/PHSLogo.png');
 
 const LoopScreen = () => {
   return (
     <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image source={PHSLogo} style={styles.logo} />
+      </View>
       <View style={styles.imageContainer}>
-        <ImageViewer Placeholder={BusLoop}/>
-      </View> 
-			<DraggableImage imageUrl={Bus}/> 
+        <ImageViewer Placeholder={BusLoop} />
+      </View>
+      <DraggableImage imageUrl={Bus} />
       <Link href="/substitutionBus" asChild>
         <Pressable style={styles.link}>
-          <Text style={styles.linkLabel}>Substitution Bus </Text>
+          <Text style={styles.linkLabel}>Substitution Bus</Text>
         </Pressable>
       </Link>
       <StatusBar style="auto" />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -32,19 +36,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+  },
+  logo: {
+    width: 50,
+    height: 50,
+  },
   footerContainer: {
-    flex: 1/3,
+    flex: 1 / 3,
     alignItems: 'center',
   },
   imageContainer: {
     flex: 1,
     paddingTop: 58,
   },
-  image: { 
-		width: '100%', 
-		height: '100%', 
-		borderRadius: 8, 
-	}, 
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
+  },
   linkContainer: {
     width: 200,
     height: 78,
